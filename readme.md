@@ -1,19 +1,19 @@
-# **Entregas para N1:**
+# :clipboard: **Entregas para N1:**
 
-1. Doc de requisitos
+:one: Doc de requisitos
 
-2. Casos de uso
+:two: Casos de uso
 
-3. Plano de Risco
+:three: Plano de Risco
 
-4. Entregas parciais de implementação
+:four: Entregas parciais de implementação
 
 
-## **Informações necessárias para testes atuais:**
+## :key: **Informações necessárias para testes atuais:**
 
-Login/Senha Coordenador: 10000/1234
+:closed_lock_with_key: Login/Senha Coordenador: 10000/1234
 
-## **Pré Visualização:**
+## :eyes: **Pré Visualização:**
 
 ![alt text](https://user-images.githubusercontent.com/60760405/163653087-5ca04cea-6f00-48c7-867e-4f4f5dfd7eee.jpg)
 ![alt text](https://user-images.githubusercontent.com/60760405/163653083-292f3b6e-819c-40c0-8047-29890b75e388.jpg)
