@@ -475,31 +475,31 @@
                   <RowConstraints maxHeight="0.666656494140625" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoRegistro" prefHeight="26.0" prefWidth="199.0" style="-fx-border-color: #ffffff;" text="REGISTRAR" textFill="WHITE">
+                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoRegistro" prefHeight="26.0" prefWidth="199.0" style="-fx-border-color: #ffffff;" text="Registrar" textFill="WHITE">
                      <padding>
                         <Insets left="40.0" />
                      </padding></JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoCriar" prefHeight="26.0" prefWidth="228.0" style="-fx-border-color: #ffffff;" text="CRIAR" textFill="WHITE" GridPane.rowIndex="1">
+                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoCriar" prefHeight="26.0" prefWidth="228.0" style="-fx-border-color: #ffffff;" text="Criar" textFill="WHITE" GridPane.rowIndex="1">
                      <padding>
                         <Insets left="40.0" />
                      </padding></JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoLIstar" prefHeight="26.0" prefWidth="259.0" style="-fx-border-color: #ffffff;" text="LISTAR" textFill="WHITE" GridPane.rowIndex="2">
+                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoLIstar" prefHeight="26.0" prefWidth="259.0" style="-fx-border-color: #ffffff;" text="Listar" textFill="WHITE" GridPane.rowIndex="2">
                      <padding>
                         <Insets left="40.0" />
                      </padding></JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoInbox" prefHeight="26.0" prefWidth="236.0" style="-fx-border-color: #ffffff;" text="INBOX" textFill="WHITE" GridPane.rowIndex="4">
+                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoInbox" prefHeight="26.0" prefWidth="236.0" style="-fx-border-color: #ffffff;" text="Inbox" textFill="WHITE" GridPane.rowIndex="4">
                      <padding>
                         <Insets left="40.0" />
                      </padding></JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoEnviarMensagem" prefHeight="26.0" prefWidth="304.0" style="-fx-border-color: #ffffff;" text="ENVIAR MENSAGEM" textFill="WHITE" GridPane.rowIndex="5">
+                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoEnviarMensagem" prefHeight="26.0" prefWidth="304.0" style="-fx-border-color: #ffffff;" text="Enviar Mensagem" textFill="WHITE" GridPane.rowIndex="5">
                      <padding>
                         <Insets left="40.0" />
                      </padding></JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#sair" prefHeight="26.0" prefWidth="304.0" style="-fx-border-color: #ffffff; -fx-background-color: #e24848;" text="SAIR" textFill="WHITE" GridPane.rowIndex="6">
+                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#sair" prefHeight="26.0" prefWidth="304.0" style="-fx-border-color: #ffffff; -fx-background-color: #e24848;" text="Sair" textFill="WHITE" GridPane.rowIndex="6">
                      <padding>
                         <Insets left="40.0" />
                      </padding></JFXButton>
-                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoEditar" prefHeight="26.0" prefWidth="228.0" style="-fx-border-color: #ffffff;" text="EDITAR" textFill="WHITE" GridPane.rowIndex="3">
+                  <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" onAction="#abrirSecaoEditar" prefHeight="26.0" prefWidth="228.0" style="-fx-border-color: #ffffff;" text="Editar" textFill="WHITE" GridPane.rowIndex="3">
                      <padding>
                         <Insets left="40.0" />
                      </padding></JFXButton>
