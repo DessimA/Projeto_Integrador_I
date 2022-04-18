@@ -24,7 +24,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
 import sistemaacademico.Main;
 import sistemaacademico.model.Aluno;
-import sistemaacademico.model.Coordenador;
+import sistemaacademico.model.Administrador;
 import sistemaacademico.model.Curso;
 import sistemaacademico.model.Disciplina;
 import sistemaacademico.model.Mensagem;
@@ -32,7 +32,7 @@ import sistemaacademico.model.Pessoa;
 import sistemaacademico.model.Professor;
 import sistemaacademico.model.Turma;
 
-public class FXMLTelaCoordController implements Initializable {
+public class FXMLTelaAdminController implements Initializable {
 
     @FXML
     private ImageView imgvUser;
@@ -224,10 +224,10 @@ public class FXMLTelaCoordController implements Initializable {
     private Pane paneEnviar;
 
     @FXML
-    private JFXTextArea areaTextoCoord;
+    private JFXTextArea areaTextoAdmin;
 
     @FXML
-    private JFXComboBox<Pessoa> cboxDestinoCoord;
+    private JFXComboBox<Pessoa> cboxDestinoAdmin;
 
     @FXML
     private Circle indicadorInbox;
@@ -244,8 +244,8 @@ public class FXMLTelaCoordController implements Initializable {
     @FXML
     private Pane telaDeLoading;
         
-    //INSTACIANDO COORDENADOR
-    Coordenador coordenador = Main.getInstance().coordenador();
+    //INSTACIANDO ADMINISTRADOR
+    Administrador administrador = Main.getInstance().administrador();
     int contIbox = 0;
     
     //ALERTAS --> SUBSTITUIR DEPOIS PELAS EXCEPTIONS!!!!
@@ -359,41 +359,41 @@ public class FXMLTelaCoordController implements Initializable {
     
     //METODOS PARA CARREGAR LISTAS
     public void carregarAlunosLista(){        
-        obsAlunoLista = FXCollections.observableArrayList(coordenador.getAlunos());
+        obsAlunoLista = FXCollections.observableArrayList(administrador.getAlunos());
         lvAlunos.setItems(obsAlunoLista); 
         
-        contadorAlunos.setText(Integer.toString(coordenador.getAlunos().size()));
+        contadorAlunos.setText(Integer.toString(administrador.getAlunos().size()));
     }
     public void carregarProfessoresLista(){        
-        obsProfessorLista = FXCollections.observableArrayList(coordenador.getProfessores());
+        obsProfessorLista = FXCollections.observableArrayList(administrador.getProfessores());
         lvProfessores.setItems(obsProfessorLista);   
         
-        contadorProfessores.setText(Integer.toString(coordenador.getProfessores().size()));
+        contadorProfessores.setText(Integer.toString(administrador.getProfessores().size()));
     }
     public void carregarCursosLista(){        
-        obsCursoLista = FXCollections.observableArrayList(coordenador.getCursos());
+        obsCursoLista = FXCollections.observableArrayList(administrador.getCursos());
         lvCursos.setItems(obsCursoLista);  
         
-        contadorCursos.setText(Integer.toString(coordenador.getCursos().size()));
+        contadorCursos.setText(Integer.toString(administrador.getCursos().size()));
    
     }
     public void carregarTurmasLista(){        
-        obsTurmaLista = FXCollections.observableArrayList(coordenador.getTurmas());
+        obsTurmaLista = FXCollections.observableArrayList(administrador.getTurmas());
         lvTurmas.setItems(obsTurmaLista);    
         
-        contadorTurmas.setText(Integer.toString(coordenador.getTurmas().size()));
+        contadorTurmas.setText(Integer.toString(administrador.getTurmas().size()));
     }
     public void carregarDisciplinasLista(){        
-        obsDisciplinaLista = FXCollections.observableArrayList(coordenador.getDisciplinas());
+        obsDisciplinaLista = FXCollections.observableArrayList(administrador.getDisciplinas());
         lvDisciplinas.setItems(obsDisciplinaLista);  
         
-        contadorDisciplinas.setText(Integer.toString(coordenador.getDisciplinas().size()));
+        contadorDisciplinas.setText(Integer.toString(administrador.getDisciplinas().size()));
     }
     public void carregarMensagensLista(){        
-        obsMensagensLista = FXCollections.observableArrayList(coordenador.getInbox());
+        obsMensagensLista = FXCollections.observableArrayList(administrador.getInbox());
         lvMensagens.setItems(obsMensagensLista);    
         
-        contIbox = coordenador.getInbox().size();
+        contIbox = administrador.getInbox().size();
         contandoMensagens();
     }
     
@@ -562,9 +562,9 @@ public class FXMLTelaCoordController implements Initializable {
             erroCampo();
             //System.out.println("Há campos vazios!");
         }else{
-            if( coordenador.registrarAluno(nome, cpf, matricula, cursoObj) == 0){
-                obsPessoa = FXCollections.observableArrayList(coordenador.getPessoas());
-                cboxDestinoCoord.setItems(obsPessoa);    
+            if( administrador.registrarAluno(nome, cpf, matricula, cursoObj) == 0){
+                obsPessoa = FXCollections.observableArrayList(administrador.getPessoas());
+                cboxDestinoAdmin.setItems(obsPessoa);    
 
                 registroRealizado(nome,matricula+"01");
             }else{
@@ -580,10 +580,10 @@ public class FXMLTelaCoordController implements Initializable {
         cboxCursoAluno.getSelectionModel().clearSelection();
         txtMatriculaAluno.setText("");
         
-        System.out.println(coordenador.getAlunos());
+        System.out.println(administrador.getAlunos());
         
         //CONTADOR ALUNO
-        contadorAlunos.setText(Integer.toString(coordenador.getAlunos().size()));
+        contadorAlunos.setText(Integer.toString(administrador.getAlunos().size()));
 
     }
 
@@ -600,14 +600,14 @@ public class FXMLTelaCoordController implements Initializable {
             erroCampo();
             // System.out.println("Há campos vazios!");
         }else{
-            if(coordenador.registrarProfessor(nome, cpf, area, matricula, cursoObj) == 0){
+            if(administrador.registrarProfessor(nome, cpf, area, matricula, cursoObj) == 0){
                 //Cbox PROFESSOR
-                obsProfessores = FXCollections.observableArrayList(coordenador.getProfessores());
+                obsProfessores = FXCollections.observableArrayList(administrador.getProfessores());
                 cboxProfessor.setItems(obsProfessores);
                 cboxProfessorEditar.setItems(obsProfessores);
 
-                obsPessoa = FXCollections.observableArrayList(coordenador.getPessoas());
-                cboxDestinoCoord.setItems(obsPessoa);
+                obsPessoa = FXCollections.observableArrayList(administrador.getPessoas());
+                cboxDestinoAdmin.setItems(obsPessoa);
                 registroRealizado(nome,matricula+"02");
                 
             }else{
@@ -624,10 +624,10 @@ public class FXMLTelaCoordController implements Initializable {
         txtMatriculaProfessor.setText("");
         txtAreaProfessor.setText("");
         
-        System.out.println(coordenador.getProfessores());
+        System.out.println(administrador.getProfessores());
         
         //CONTADOR PROFESSOR
-        contadorProfessores.setText(Integer.toString(coordenador.getProfessores().size()));
+        contadorProfessores.setText(Integer.toString(administrador.getProfessores().size()));
     }
 
     
@@ -665,12 +665,12 @@ public class FXMLTelaCoordController implements Initializable {
             //System.out.println("Há campos vazios!");
             erroCampo();
         }else{
-            coordenador.criarCurso(nome);
+            administrador.criarCurso(nome);
 
-            System.out.println(coordenador.getCursos());
+            System.out.println(administrador.getCursos());
 
             //CURSOS CBOX
-            obsCursos = FXCollections.observableArrayList(coordenador.getCursos());
+            obsCursos = FXCollections.observableArrayList(administrador.getCursos());
             cboxCurso.setItems(obsCursos);
             cboxCursoAluno.setItems(obsCursos);
             cboxCursoDisciplina.setItems(obsCursos);
@@ -687,7 +687,7 @@ public class FXMLTelaCoordController implements Initializable {
         txtNomeCurso.setText("");
         
         //CONTADOR DE CURSOS
-        contadorCursos.setText(Integer.toString(coordenador.getCursos().size()));
+        contadorCursos.setText(Integer.toString(administrador.getCursos().size()));
 
     }
 
@@ -700,12 +700,12 @@ public class FXMLTelaCoordController implements Initializable {
             //System.out.println("HÁ CAMPOS VAZIOS");
             erroCampo();
         }else{
-            if(coordenador.criarDisciplina(nome, curso) == 0){
-                System.out.println(coordenador.getDisciplinas());
+            if(administrador.criarDisciplina(nome, curso) == 0){
+                System.out.println(administrador.getDisciplinas());
 
 
                 //DISCIPLINAS CBOX
-                obsDisciplinas = FXCollections.observableArrayList(coordenador.getDisciplinas());
+                obsDisciplinas = FXCollections.observableArrayList(administrador.getDisciplinas());
                 cboxDisciplina.setItems(obsDisciplinas);
 
                 //LISTA
@@ -723,7 +723,7 @@ public class FXMLTelaCoordController implements Initializable {
         cboxCursoDisciplina.getSelectionModel().clearSelection();
         
         //CONTADOR DISCIPLINAS
-        contadorDisciplinas.setText(Integer.toString(coordenador.getDisciplinas().size()));
+        contadorDisciplinas.setText(Integer.toString(administrador.getDisciplinas().size()));
 
 
     }
@@ -740,10 +740,10 @@ public class FXMLTelaCoordController implements Initializable {
                 || cboxProfessor.getSelectionModel().getSelectedItem() == null){
             erroCampo();
         }else{
-            if(coordenador.criarTurma(codigo, curso, disciplina, professor) == 0){
-                System.out.println(coordenador.getTurmas());
+            if(administrador.criarTurma(codigo, curso, disciplina, professor) == 0){
+                System.out.println(administrador.getTurmas());
                 //TURMAS CBOX
-                obsTurmas = FXCollections.observableArrayList(coordenador.getTurmas());
+                obsTurmas = FXCollections.observableArrayList(administrador.getTurmas());
                 //cboxTurma.setItems(obsTurmas);
                 cboxTurmaEditar.setItems(obsTurmas);
                 //LISTA
@@ -763,7 +763,7 @@ public class FXMLTelaCoordController implements Initializable {
         cboxProfessor.getSelectionModel().clearSelection();
         
         //CONTADOR TURMAS
-        contadorTurmas.setText(Integer.toString(coordenador.getTurmas().size()));
+        contadorTurmas.setText(Integer.toString(administrador.getTurmas().size()));
 
     }
     
@@ -862,16 +862,16 @@ public class FXMLTelaCoordController implements Initializable {
     void removerAlunoLista(ActionEvent event) {
         removido(lvAlunos.getSelectionModel().getSelectedItem().getNome());
         
-        coordenador.getPessoas().remove(lvAlunos.getSelectionModel().getSelectedItem());
+        administrador.getPessoas().remove(lvAlunos.getSelectionModel().getSelectedItem());
         obsPessoa.remove(lvAlunos.getSelectionModel().getSelectedItem());
         
-        coordenador.getAlunos().remove(lvAlunos.getSelectionModel().getSelectedItem());
+        administrador.getAlunos().remove(lvAlunos.getSelectionModel().getSelectedItem());
         obsAlunoLista.remove(lvAlunos.getSelectionModel().getSelectedItem());
             
-        contadorAlunos.setText(Integer.toString(coordenador.getAlunos().size()));
+        contadorAlunos.setText(Integer.toString(administrador.getAlunos().size()));
         
-        obsPessoa = FXCollections.observableArrayList(coordenador.getPessoas());
-        cboxDestinoCoord.setItems(obsPessoa);
+        obsPessoa = FXCollections.observableArrayList(administrador.getPessoas());
+        cboxDestinoAdmin.setItems(obsPessoa);
 
     }
 
@@ -879,13 +879,13 @@ public class FXMLTelaCoordController implements Initializable {
     void removerCursosLista(ActionEvent event) {
         removido(lvCursos.getSelectionModel().getSelectedItem().getNome());
         
-        coordenador.getCursos().remove(lvCursos.getSelectionModel().getSelectedItem());
+        administrador.getCursos().remove(lvCursos.getSelectionModel().getSelectedItem());
         obsCursoLista.remove(lvCursos.getSelectionModel().getSelectedItem());
         
-        contadorCursos.setText(Integer.toString(coordenador.getCursos().size()));
+        contadorCursos.setText(Integer.toString(administrador.getCursos().size()));
         
         //CURSOS CBOX
-        obsCursos = FXCollections.observableArrayList(coordenador.getCursos());
+        obsCursos = FXCollections.observableArrayList(administrador.getCursos());
         cboxCurso.setItems(obsCursos);
         cboxCursoAluno.setItems(obsCursos);
         cboxCursoDisciplina.setItems(obsCursos);
@@ -896,13 +896,13 @@ public class FXMLTelaCoordController implements Initializable {
     void removerDisciplinasLista(ActionEvent event) {
         removido(lvDisciplinas.getSelectionModel().getSelectedItem().getNome());
         
-        coordenador.getDisciplinas().remove(lvDisciplinas.getSelectionModel().getSelectedItem());
+        administrador.getDisciplinas().remove(lvDisciplinas.getSelectionModel().getSelectedItem());
         obsDisciplinaLista.remove(lvDisciplinas.getSelectionModel().getSelectedItem());
         
-        contadorDisciplinas.setText(Integer.toString(coordenador.getDisciplinas().size()));
+        contadorDisciplinas.setText(Integer.toString(administrador.getDisciplinas().size()));
         
         //DISCIPLINAS CBOX
-        obsDisciplinas = FXCollections.observableArrayList(coordenador.getDisciplinas());
+        obsDisciplinas = FXCollections.observableArrayList(administrador.getDisciplinas());
         cboxDisciplina.setItems(obsDisciplinas);
     }
     
@@ -910,22 +910,22 @@ public class FXMLTelaCoordController implements Initializable {
     void removerProfessorLista(ActionEvent event) {
         removido(lvProfessores.getSelectionModel().getSelectedItem().getNome());
          //REMOVENDO DE PESSOAS
-        coordenador.getPessoas().remove(lvProfessores.getSelectionModel().getSelectedItem());
+        administrador.getPessoas().remove(lvProfessores.getSelectionModel().getSelectedItem());
         obsPessoa.remove(lvProfessores.getSelectionModel().getSelectedItem());
         //REMOVENDO DE PROFESSORES
-        coordenador.getProfessores().remove(lvProfessores.getSelectionModel().getSelectedItem());
+        administrador.getProfessores().remove(lvProfessores.getSelectionModel().getSelectedItem());
         obsProfessorLista.remove(lvProfessores.getSelectionModel().getSelectedItem());
         
        
         
-        contadorProfessores.setText(Integer.toString(coordenador.getProfessores().size()));
+        contadorProfessores.setText(Integer.toString(administrador.getProfessores().size()));
         
         //Cbox PROFESSOR
-        obsProfessores = FXCollections.observableArrayList(coordenador.getProfessores());
+        obsProfessores = FXCollections.observableArrayList(administrador.getProfessores());
         cboxProfessor.setItems(obsProfessores);
         cboxProfessorEditar.setItems(obsProfessores);
-        obsPessoa = FXCollections.observableArrayList(coordenador.getPessoas());
-        cboxDestinoCoord.setItems(obsPessoa);
+        obsPessoa = FXCollections.observableArrayList(administrador.getPessoas());
+        cboxDestinoAdmin.setItems(obsPessoa);
         
     }
 
@@ -933,13 +933,13 @@ public class FXMLTelaCoordController implements Initializable {
     void removerTurmasLista(ActionEvent event) {
         removido(lvTurmas.getSelectionModel().getSelectedItem().getCodigo());
         
-        coordenador.getTurmas().remove(lvTurmas.getSelectionModel().getSelectedItem());
+        administrador.getTurmas().remove(lvTurmas.getSelectionModel().getSelectedItem());
         obsTurmaLista.remove(lvTurmas.getSelectionModel().getSelectedItem());
         
-        contadorTurmas.setText(Integer.toString(coordenador.getTurmas().size()));
+        contadorTurmas.setText(Integer.toString(administrador.getTurmas().size()));
         
         //TURMAS CBOX
-        obsTurmas = FXCollections.observableArrayList(coordenador.getTurmas());
+        obsTurmas = FXCollections.observableArrayList(administrador.getTurmas());
         //cboxTurma.setItems(obsTurmas);
         cboxTurmaEditar.setItems(obsTurmas);
     }
@@ -951,14 +951,14 @@ public class FXMLTelaCoordController implements Initializable {
     void removerMensagem(ActionEvent event) {
         removido("Mensagem");
         
-        coordenador.getInbox().remove(lvMensagens.getSelectionModel().getSelectedItem());
+        administrador.getInbox().remove(lvMensagens.getSelectionModel().getSelectedItem());
         obsMensagensLista.remove(lvMensagens.getSelectionModel().getSelectedItem());
         
-        contadorMensagens.setText(Integer.toString(coordenador.getInbox().size()));
-        contadorInbox.setText(Integer.toString(coordenador.getInbox().size()));
-        System.out.println(coordenador.getInbox());
+        contadorMensagens.setText(Integer.toString(administrador.getInbox().size()));
+        contadorInbox.setText(Integer.toString(administrador.getInbox().size()));
+        System.out.println(administrador.getInbox());
         
-        if(coordenador.getInbox().size() == 0){
+        if(administrador.getInbox().size() == 0){
             contadorInbox.setVisible(false);
             indicadorInbox.setVisible(false);
         }
@@ -975,15 +975,15 @@ public class FXMLTelaCoordController implements Initializable {
 
     @FXML
     void enviarMensagem(ActionEvent event) {
-        String texto = areaTextoCoord.getText();
-        Pessoa destinatario = cboxDestinoCoord.getSelectionModel().getSelectedItem();
+        String texto = areaTextoAdmin.getText();
+        Pessoa destinatario = cboxDestinoAdmin.getSelectionModel().getSelectedItem();
        
         if(texto == null || texto.equals("")){
             System.out.println("VAZIO");
         }else{
-            coordenador.enviarMensagem(destinatario, texto);
-            areaTextoCoord.setText("");
-            cboxDestinoCoord.getSelectionModel().clearSelection();
+            administrador.enviarMensagem(destinatario, texto);
+            areaTextoAdmin.setText("");
+            cboxDestinoAdmin.getSelectionModel().clearSelection();
             
             enviado(destinatario.getNome());
             
@@ -1001,8 +1001,8 @@ public class FXMLTelaCoordController implements Initializable {
     void mudarProfessor(ActionEvent event) {
         Turma turma = cboxTurmaEditar.getSelectionModel().getSelectedItem();
         Professor professor = cboxProfessorEditar.getSelectionModel().getSelectedItem();        
-        coordenador.getTurmas().get( coordenador.getTurmas().indexOf(turma)).setProfessor(professor);
-        System.out.println(coordenador.getTurmas().get( coordenador.getTurmas().indexOf(turma)));
+        administrador.getTurmas().get( administrador.getTurmas().indexOf(turma)).setProfessor(professor);
+        System.out.println(administrador.getTurmas().get( administrador.getTurmas().indexOf(turma)));
         
         cboxTurmaEditar.getSelectionModel().clearSelection();
         cboxProfessorEditar.getSelectionModel().clearSelection();
@@ -1033,7 +1033,7 @@ public class FXMLTelaCoordController implements Initializable {
         Image image1 = new Image("/sistemaacademico/images/user.png");
         imgvUser.setImage(image1);
         
-        Image image2 = new Image("/sistemaacademico/images/coordenador.boasvindas.png");
+        Image image2 = new Image("/sistemaacademico/images/administrador.boasvindas.png");
         imvSaudacao.setImage(image2);
         
         //MOSTRANDO COMO TELA DE INICIO
@@ -1051,7 +1051,7 @@ public class FXMLTelaCoordController implements Initializable {
         paneEnviar.setVisible(false);
         
         //DEFININDO MATRICULA NA INTEFACE
-        lblmatricula.setText(coordenador.getMatricula());
+        lblmatricula.setText(administrador.getMatricula());
         
         //REMOVENDO INDICADOR DE MENSAGENS
         indicadorInbox.setVisible(false);

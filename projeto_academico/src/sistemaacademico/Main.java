@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sistemaacademico.model.Coordenador;
+import sistemaacademico.model.Administrador;
 
 /**
  *
@@ -19,9 +19,9 @@ public class Main extends Application {
         return instance;
     }
     
-    private Coordenador coordenador = new Coordenador();    
-    public Coordenador coordenador() {
-        return coordenador;
+    private Administrador administrador = new Administrador();    
+    public Administrador administrador() {
+        return administrador;
     }
     
 
@@ -30,7 +30,7 @@ public class Main extends Application {
     private static Stage novoStage;
     
     private static Scene loginScene;
-    private static Scene coordenadorScene;
+    private static Scene administradorScene;
     private static Scene alunoScene;
     private static Scene professorScene;
     
@@ -44,8 +44,8 @@ public class Main extends Application {
         loginScene = new Scene(login);
         
         //COORDENADOR
-        Parent coordenador = FXMLLoader.load(getClass().getResource("view/FXMLTelaCoord.fxml"));
-        coordenadorScene = new Scene(coordenador);
+        Parent administrador = FXMLLoader.load(getClass().getResource("view/FXMLTelaAdmin.fxml"));
+        administradorScene = new Scene(administrador);
         
         //ALUNO
         Parent aluno = FXMLLoader.load(getClass().getResource("view/FXMLTelaAluno.fxml"));
@@ -63,8 +63,8 @@ public class Main extends Application {
 
     public static void trocarTela(String nomeTela){
         switch(nomeTela){
-            case("coordenador"):
-                novoStage.setScene(coordenadorScene);
+            case("administrador"):
+                novoStage.setScene(administradorScene);
                 break;
             case("aluno"):
                 novoStage.setScene(alunoScene);

@@ -1,26 +1,25 @@
-
 package sistemaacademico.model;
 
 import java.util.ArrayList;
 
 
-public class Coordenador{
+public class Administrador{
     private String senha = "1234";         
     private String matricula = "100000"; 
-    private String nome = "Coordenador";
+    private String nome = "Adinistrador";
     private int indexUsuarioTela;
 
     
-    private ArrayList<Aluno> alunos = new ArrayList<>();
-    private ArrayList<Professor> professores = new ArrayList<>();
-    private ArrayList<Curso> cursos = new ArrayList<>();
-    private ArrayList<Disciplina> disciplinas = new ArrayList<>();
-    private ArrayList<Turma> turmas = new ArrayList<>();
-    private ArrayList<Pessoa> pessoas = new ArrayList<>(); // PARA A PARTE DAS MENSAGENS
+    private final ArrayList<Aluno> alunos = new ArrayList<>();
+    private final ArrayList<Professor> professores = new ArrayList<>();
+    private final ArrayList<Curso> cursos = new ArrayList<>();
+    private final ArrayList<Disciplina> disciplinas = new ArrayList<>();
+    private final ArrayList<Turma> turmas = new ArrayList<>();
+    private final ArrayList<Pessoa> pessoas = new ArrayList<>(); // PARA A PARTE DAS MENSAGENS
     
-    private ArrayList<Mensagem> inbox = new ArrayList<>();
+    private final ArrayList<Mensagem> inbox = new ArrayList<>();
     //CONSTRUTOR
-    public Coordenador() {
+    public Administrador() {
 		
     }
 

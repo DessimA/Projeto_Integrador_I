@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import sistemaacademico.Main;
-import sistemaacademico.model.Coordenador;
+import sistemaacademico.model.Administrador;
 import javafx.scene.control.Alert;
 /**
  *
@@ -33,7 +33,7 @@ public class FXMLTelaLoginController implements Initializable {
     @FXML
     private ImageView imgVpattern;
     
-    Coordenador coordenador = Main.getInstance().coordenador();
+    Administrador administrador = Main.getInstance().administrador();
     Alert alert = new Alert(Alert.AlertType.ERROR);
     
    
@@ -59,16 +59,16 @@ public class FXMLTelaLoginController implements Initializable {
 
         switch (matricula.charAt(tamUltimo)) {        
             case '1'://ALUNO
-                if(coordenador.getAlunos().size() != 0){
-                    for(int i = 0; i < coordenador.getAlunos().size(); i++){
-                        if(matricula.equals(coordenador.getAlunos().get(i).getMatricula()) && senha.equals(coordenador.getAlunos().get(i).getSenha()) ){                       
+                if(administrador.getAlunos().size() != 0){
+                    for(int i = 0; i < administrador.getAlunos().size(); i++){
+                        if(matricula.equals(administrador.getAlunos().get(i).getMatricula()) && senha.equals(administrador.getAlunos().get(i).getSenha()) ){                       
                             naoEncontrou = false;
-                            System.out.println("BEM VINDO ALUNO "+coordenador.getAlunos().get(i).getNome());
+                            System.out.println("BEM VINDO ALUNO "+administrador.getAlunos().get(i).getNome());
                             System.out.println("index = "+i);
-                            coordenador.setIndexUsuarioTela(i);
+                            administrador.setIndexUsuarioTela(i);
                             limparCampos();
                             
-                            coordenador.setIndexUsuarioTela(i);
+                            administrador.setIndexUsuarioTela(i);
                             Main.trocarTela("aluno");
                             break;
                         }else{
@@ -81,17 +81,17 @@ public class FXMLTelaLoginController implements Initializable {
                 break;
             
             case '2'://PROFESSOR
-                if(coordenador.getProfessores().size() != 0){
-                    for(int i = 0; i < coordenador.getProfessores().size(); i++){
-                        if(matricula.equals(coordenador.getProfessores().get(i).getMatricula()) && senha.equals(coordenador.getProfessores().get(i).getSenha())){
+                if(administrador.getProfessores().size() != 0){
+                    for(int i = 0; i < administrador.getProfessores().size(); i++){
+                        if(matricula.equals(administrador.getProfessores().get(i).getMatricula()) && senha.equals(administrador.getProfessores().get(i).getSenha())){
                             System.out.println("BEM VINDO PROFESSOR");
-                            System.out.println(coordenador.getProfessores().get(i).getNome());
-                            coordenador.setIndexUsuarioTela(i);
+                            System.out.println(administrador.getProfessores().get(i).getNome());
+                            administrador.setIndexUsuarioTela(i);
                             System.out.println("index = "+i);
-                            coordenador.setIndexUsuarioTela(i);
+                            administrador.setIndexUsuarioTela(i);
                             limparCampos();
 
-                            coordenador.setIndexUsuarioTela(i);
+                            administrador.setIndexUsuarioTela(i);
                             Main.trocarTela("professor");
                             break;
                         }else{
@@ -102,13 +102,13 @@ public class FXMLTelaLoginController implements Initializable {
                     erroLogin();
                 }
                 break;
-            case '0'://COORDENADOR
-                if(matricula.equals(coordenador.getMatricula()) && senha.equals(coordenador.getSenha())){
-                    System.out.println("BEM VINDO COORDENADOR"); 
+            case '0'://ADMINISTRADOR
+                if(matricula.equals(administrador.getMatricula()) && senha.equals(administrador.getSenha())){
+                    System.out.println("BEM VINDO ADMINISTRADOR"); 
                     
                     limparCampos();
                     
-                    Main.trocarTela("coordenador");
+                    Main.trocarTela("administrador");
                 }else{
                     erroLogin();
                 }

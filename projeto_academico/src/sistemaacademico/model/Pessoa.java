@@ -83,8 +83,8 @@ public abstract class Pessoa {
     	Mensagem mensagem = new Mensagem(texto,this.getNome());
     	destinatario.setInbox(mensagem);
     }   
-    //-- EXCLUSIVO PARA O COORDENADOR (RECEBIMENTO DE MENSAGEM POR PARTE DELE)
-    public void enviarMensagem(Coordenador destinatario, String texto) {
+    //-- EXCLUSIVO PARA O ADMINISTRADOR (RECEBIMENTO DE MENSAGEM POR PARTE DELE)
+    public void enviarMensagem(Administrador destinatario, String texto) {
     	Mensagem mensagem = new Mensagem(texto,this.getNome());
     	destinatario.setInbox(mensagem);
     } 

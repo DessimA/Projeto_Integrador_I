@@ -21,7 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.Region;
 import sistemaacademico.Main;
 import sistemaacademico.model.Aluno;
-import sistemaacademico.model.Coordenador;
+import sistemaacademico.model.Administrador;
 import sistemaacademico.model.Mensagem;
 import sistemaacademico.model.Pessoa;
 import sistemaacademico.model.Turma;
@@ -61,7 +61,7 @@ public class FXMLTelaAlunoController implements Initializable {
     private JFXComboBox<Pessoa> cboxDestinatario;
 
     @FXML
-    private JFXCheckBox ckeckCoordenador;
+    private JFXCheckBox ckeckAdministrador;
 
     @FXML
     private Pane paneTurmasDisponiveis;
@@ -99,8 +99,8 @@ public class FXMLTelaAlunoController implements Initializable {
     @FXML
     private ImageView imgvLogo;
     
-    //CHAMANDO COORDENADOR
-    Coordenador coordenador = Main.getInstance().coordenador();    
+    //CHAMANDO ADMINISTRADOR
+    Administrador administrador = Main.getInstance().administrador();    
     
     //COMBOBOXS
     private ObservableList<Pessoa> obsDestinatario;
@@ -147,7 +147,7 @@ public class FXMLTelaAlunoController implements Initializable {
     
     //CARREGAR LISTAS-CBOX
     public void carregarTurmasAlunoLista(){  
-        Aluno aluno = coordenador.getAlunos().get(coordenador.getIndexUsuarioTela());
+        Aluno aluno = administrador.getAlunos().get(administrador.getIndexUsuarioTela());
        
         obsTurmasAluno = FXCollections.observableArrayList(aluno.getTurmas());
         lvTurmasAluno.setItems(obsTurmasAluno);    
@@ -155,18 +155,18 @@ public class FXMLTelaAlunoController implements Initializable {
         contadorTurmasAluno.setText(Integer.toString(aluno.getTurmas().size()));
     }   
     public void carregarTurmasDisponiveis(){        
-        obsTurmasDisponiveis = FXCollections.observableArrayList(coordenador.getTurmas());
+        obsTurmasDisponiveis = FXCollections.observableArrayList(administrador.getTurmas());
         lvTurmas.setItems(obsTurmasDisponiveis);    
         
-        contadorTurmasDisponiveis.setText(Integer.toString(coordenador.getTurmas().size()));
+        contadorTurmasDisponiveis.setText(Integer.toString(administrador.getTurmas().size()));
     }
     
     public void carregarPessoasDestinatarios(){        
-        obsDestinatario = FXCollections.observableArrayList(coordenador.getPessoas());
+        obsDestinatario = FXCollections.observableArrayList(administrador.getPessoas());
         cboxDestinatario.setItems(obsDestinatario);    
     }
     public void carregarMensagens(){        
-        Aluno aluno = coordenador.getAlunos().get(coordenador.getIndexUsuarioTela());
+        Aluno aluno = administrador.getAlunos().get(administrador.getIndexUsuarioTela());
        
         obsMensagens = FXCollections.observableArrayList(aluno.getInbox());
         lvMensagens.setItems(obsMensagens);    
@@ -232,7 +232,7 @@ public class FXMLTelaAlunoController implements Initializable {
         imvSaudacao.setVisible(false);
         lblSaudacao.setVisible(false);
         
-        if(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getTurmas().size() > 0){
+        if(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().size() > 0){
             carregarTurmasAlunoLista();
         }else{
             System.out.println("O ALUNO AINDA NAO TEM TURMAS");
@@ -241,7 +241,7 @@ public class FXMLTelaAlunoController implements Initializable {
     }
     @FXML
     void desabilitarOutros(ActionEvent event) { 
-        if(ckeckCoordenador.isSelected()){
+        if(ckeckAdministrador.isSelected()){
             cboxDestinatario.setDisable(true);
         }else{
             cboxDestinatario.setDisable(false);
@@ -256,12 +256,12 @@ public class FXMLTelaAlunoController implements Initializable {
         if(texto == null || texto.equals("")){
             System.out.println("VAZIO");
         }else{
-            if(ckeckCoordenador.isSelected()){
-                coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).enviarMensagem(coordenador, texto);
-                System.out.println("enviado para coordenador");
-                enviado("coordenador");
+            if(ckeckAdministrador.isSelected()){
+                administrador.getAlunos().get(administrador.getIndexUsuarioTela()).enviarMensagem(administrador, texto);
+                System.out.println("enviado para administrador");
+                enviado("administrador");
             }else{
-                coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).enviarMensagem(destinatario,texto);
+                administrador.getAlunos().get(administrador.getIndexUsuarioTela()).enviarMensagem(destinatario,texto);
                 System.out.println("enviado para "+destinatario.getNome());
                 
                 enviado(destinatario.getNome());
@@ -276,9 +276,9 @@ public class FXMLTelaAlunoController implements Initializable {
 
     @FXML
     void matricularTurma(ActionEvent event) {
-        if(coordenador.getTurmas().size() > 0){
+        if(administrador.getTurmas().size() > 0){
             Turma turma  = lvTurmas.getSelectionModel().getSelectedItem();
-            coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).addTurma(turma);
+            administrador.getAlunos().get(administrador.getIndexUsuarioTela()).addTurma(turma);
             System.out.println("FEITO");   
             
             matricular(turma.getCodigo());
@@ -290,17 +290,17 @@ public class FXMLTelaAlunoController implements Initializable {
 
     @FXML
     void removerMensagem(ActionEvent event) {
-        if(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox().size() > 0){
+        if(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox().size() > 0){
             removido("Mensagem");
         
-            coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox().remove(lvMensagens.getSelectionModel().getSelectedItem());
+            administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox().remove(lvMensagens.getSelectionModel().getSelectedItem());
             obsMensagens.remove(lvMensagens.getSelectionModel().getSelectedItem());
 
-            contadorMensagens.setText(Integer.toString(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox().size()));
-            contadorInbox.setText(Integer.toString(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox().size()));
-            System.out.println(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox()); 
+            contadorMensagens.setText(Integer.toString(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox().size()));
+            contadorInbox.setText(Integer.toString(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox().size()));
+            System.out.println(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox()); 
             
-            if(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox().size() == 0){
+            if(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox().size() == 0){
                 contadorInbox.setVisible(false);
                 indicadorInbox.setVisible(false);
             }
@@ -322,13 +322,13 @@ public class FXMLTelaAlunoController implements Initializable {
     
     @FXML
     void trancarTurma(ActionEvent event) {
-       if(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getTurmas().size() > 0){
+       if(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().size() > 0){
             trancar();
         
-            coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getTurmas().remove(lvTurmasAluno.getSelectionModel().getSelectedItem());
+            administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().remove(lvTurmasAluno.getSelectionModel().getSelectedItem());
             obsTurmasAluno.remove(lvTurmasAluno.getSelectionModel().getSelectedItem());
         
-            contadorTurmasAluno.setText(Integer.toString(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getTurmas().size()));
+            contadorTurmasAluno.setText(Integer.toString(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().size()));
        }else{
            System.out.println("NAO HA TURMAS");
        }
@@ -336,7 +336,7 @@ public class FXMLTelaAlunoController implements Initializable {
 
     @FXML
     void verMensagem(ActionEvent event) {
-        if(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox().size() > 0){
+        if(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox().size() > 0){
             Mensagem mensagem = lvMensagens.getSelectionModel().getSelectedItem();
             verMensagem(mensagem.getTexto(),mensagem.getRemetente());
         }else{
@@ -348,22 +348,22 @@ public class FXMLTelaAlunoController implements Initializable {
 
     @FXML
     void sairLoading(ActionEvent event) {
-        lblNome.setText(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getNome());
-        lblmatricula.setText(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getMatricula());
+        lblNome.setText(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getNome());
+        lblmatricula.setText(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getMatricula());
         carregarMensagens();
         telaDeLoading.setVisible(false);
         
     }
 
     void contandoMensagens(){
-        if(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox().size() > 0){
+        if(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox().size() > 0){
             contadorInbox.setVisible(true);
             indicadorInbox.setVisible(true);
-            contadorInbox.setText(Integer.toString(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox().size()));
+            contadorInbox.setText(Integer.toString(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox().size()));
         }else{
             contadorInbox.setVisible(false);
             indicadorInbox.setVisible(false);
-            contadorInbox.setText(Integer.toString(coordenador.getAlunos().get(coordenador.getIndexUsuarioTela()).getInbox().size()));
+            contadorInbox.setText(Integer.toString(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getInbox().size()));
         }
     }
     

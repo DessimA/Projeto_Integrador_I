@@ -148,7 +148,7 @@
                         <JFXButton focusTraversable="false" onAction="#enviarMensagem" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #095379;" text="Enviar" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                         <JFXTextArea fx:id="areaTexto" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" />
                         <JFXComboBox fx:id="cboxDestinatario" prefHeight="26.0" prefWidth="255.0" promptText="Destinatario" />
-                        <JFXCheckBox fx:id="ckeckCoordenador" focusTraversable="false" onAction="#desabilitarOutros" style="-jfx-checked-color: #70b9e8;" text="Coordenador">
+                        <JFXCheckBox fx:id="ckeckAdministrador" focusTraversable="false" onAction="#desabilitarOutros" style="-jfx-checked-color: #70b9e8;" text="Administrador">
                            <GridPane.margin>
                               <Insets left="350.0" />
                            </GridPane.margin>

@@ -1,11 +1,10 @@
-
 package sistemaacademico.model;
 
 import java.util.ArrayList;
 
 public class Aluno extends Pessoa{
-    private ArrayList<Disciplina> disciplinas = new ArrayList<>();
-    private ArrayList<Turma> turmas = new ArrayList<>();
+    private final ArrayList<Disciplina> disciplinas = new ArrayList<>();
+    private final ArrayList<Turma> turmas = new ArrayList<>();
   
     //CONSTRUTOR
     public Aluno(String nome, String cpf, String matricula, Curso curso) {

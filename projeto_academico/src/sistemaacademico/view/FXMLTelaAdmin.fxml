@@ -34,7 +34,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaacademico.controller.FXMLTelaCoordController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemaacademico.controller.FXMLTelaAdminController">
    <children>
       <Pane layoutX="-1.0" prefHeight="600.0" prefWidth="801.0" style="-fx-background-color: WHITE;">
          <children>
@@ -45,7 +45,7 @@
                </image>
             </ImageView>
             <Label fx:id="lblmatricula" alignment="CENTER" layoutX="2.0" layoutY="120.0" prefHeight="16.0" prefWidth="250.0" text="Matricula" textFill="WHITE" />
-            <Label alignment="CENTER" layoutY="143.0" prefHeight="16.0" prefWidth="250.0" text="Coordenador" textFill="WHITE" />
+            <Label alignment="CENTER" layoutY="143.0" prefHeight="16.0" prefWidth="250.0" text="Administrador" textFill="WHITE" />
             <Separator layoutX="9.0" layoutY="184.0" prefHeight="3.0" prefWidth="233.0" />
             <Pane fx:id="paneRegistro" layoutX="250.0" prefHeight="600.0" prefWidth="550.0" visible="false">
                <children>
@@ -394,7 +394,7 @@
                   </Label>
                   <JFXComboBox fx:id="cboxTurmaEditar" layoutX="130.0" layoutY="206.0" prefHeight="26.0" prefWidth="307.0" promptText="Turma" />
                   <JFXComboBox fx:id="cboxProfessorEditar" layoutX="130.0" layoutY="286.0" prefHeight="26.0" prefWidth="307.0" promptText="Professor" />
-                  <JFXButton layoutX="126.0" layoutY="361.0" onAction="#mudarProfessor" prefHeight="45.0" prefWidth="316.0" style="-fx-background-color: #095379;" text="MUDAR" textFill="WHITE" />
+                  <JFXButton layoutX="126.0" layoutY="361.0" onAction="#mudarProfessor" prefHeight="45.0" prefWidth="316.0" style="-fx-background-color: #095379;" text="Mudar" textFill="WHITE" />
                </children>
             </Pane>
             <Pane fx:id="paneInbox" layoutX="250.0" prefHeight="600.0" prefWidth="550.0" visible="false">
@@ -448,8 +448,8 @@
                      </rowConstraints>
                      <children>
                         <JFXButton focusTraversable="false" onAction="#enviarMensagem" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #095379;" text="Enviar" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                        <JFXTextArea fx:id="areaTextoCoord" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" />
-                        <JFXComboBox fx:id="cboxDestinoCoord" prefHeight="26.0" prefWidth="255.0" promptText="Destinatario" />
+                        <JFXTextArea fx:id="areaTextoAdmin" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="cboxDestinoAdmin" prefHeight="26.0" prefWidth="255.0" promptText="Destinatario" />
                      </children>
                   </GridPane>
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="45.0" prefHeight="35.0" prefWidth="550.0" text="Enviar Mensagem">
@@ -562,14 +562,14 @@
             </GridPane>
             <Circle fx:id="indicadorInbox" fill="#1db58a" layoutX="215.0" layoutY="430.0" radius="14.0" stroke="WHITE" strokeType="INSIDE" />
             <Label fx:id="contadorInbox" alignment="CENTER" layoutX="201.0" layoutY="422.0" prefHeight="16.0" prefWidth="28.0" text="98" textFill="WHITE" />
-            <Label fx:id="lblSaudacao" alignment="CENTER" layoutX="251.0" layoutY="123.0" prefHeight="40.0" prefWidth="550.0" text="Seja Bem-Vindo, Coordenador!" visible="false">
+            <Label fx:id="lblSaudacao" alignment="CENTER" layoutX="251.0" layoutY="123.0" prefHeight="40.0" prefWidth="550.0" text="Seja Bem-Vindo, Administrador!" visible="false">
                <font>
                   <Font size="26.0" />
                </font>
             </Label>
             <ImageView fx:id="imvSaudacao" fitHeight="295.0" fitWidth="316.0" layoutX="429.0" layoutY="178.0" opacity="0.08" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../images/coordenador.boasvindas.png" />
+                  <Image url="@../images/administrador.boasvindas.png" />
                </image>
             </ImageView>
          </children>
