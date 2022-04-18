@@ -1,4 +1,4 @@
-# :clipboard: **Entregas para N1:**
+# :clipboard: **Projeto da Disciplina:**
 
 ### :one: Descrição
 Implementar e documentar uma aplicação desktop para gerenciar as notas e historico de alunos e as disciplinas de professores. A aplicação deverá armazenar os dados em um SGBD, local ou remoto. Deve possuir três tipos de perfil: Aluno, Professor e Administrador, cada um com suas funcionalidades específicas.
