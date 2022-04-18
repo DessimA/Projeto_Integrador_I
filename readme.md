@@ -76,7 +76,7 @@ Implementar e documentar uma aplicação desktop para gerenciar as notas e histo
 
 ## :key: **Informações necessárias para testes atuais:**
 
-:closed_lock_with_key: Login/Senha Coordenador: 10000/1234
+:closed_lock_with_key: Usuario/Senha Administrador: 10000/1234
 
 ## :eyes: **Pré Visualização:**
 
