@@ -74,6 +74,14 @@ Implementar e documentar uma aplicação desktop para gerenciar as notas e histo
 • Não deve ser utilizado nenhuma ferramenta ou biblioteca de ORM.
 
 
+### :five: Entregáveis
+
+> Plano de riscos
+> Doc de requisitos
+> Doc de casos de uso
+> Aplicação (parcial)
+> Doc da aplicação (parcial) 
+
 ## :key: **Informações necessárias para testes atuais:**
 
 :closed_lock_with_key: Usuario/Senha Administrador: 10000/1234
