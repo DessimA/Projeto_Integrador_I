@@ -38,7 +38,7 @@
    <children>
       <Pane layoutX="-1.0" prefHeight="600.0" prefWidth="801.0" style="-fx-background-color: WHITE;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#343536" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2748a4" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <ImageView fx:id="imgvUser" fitHeight="60.0" fitWidth="60.0" layoutX="95.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/user.png" />
@@ -576,20 +576,20 @@
       </Pane>
       <Pane fx:id="telaDeLoading" prefHeight="600.0" prefWidth="802.0" style="-fx-background-color: white;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#343536" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="802.0" />
-            <JFXButton layoutX="347.0" layoutY="369.0" onAction="#sairLoading" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #70b9e8;" text="Continuar" textFill="WHITE" />
-            <Label layoutX="347.0" layoutY="473.0" text="Carregando dados..." textFill="WHITE" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="802.0" />
+            <JFXButton layoutX="347.0" layoutY="369.0" onAction="#sairLoading" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #177910;" text="Continuar" textFill="WHITE" />
+            <Label layoutX="347.0" layoutY="473.0" text="Carregando dados..." />
             <ImageView fx:id="imgvLogo" fitHeight="128.0" fitWidth="128.0" layoutX="350.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="320.0" layoutY="278.0" text="Sistema Academico" textFill="WHITE">
+            <Label layoutX="320.0" layoutY="278.0" text="Sistema Academico">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label layoutX="404.0" layoutY="308.0" text="v0.1" textFill="WHITE" />
+            <Label layoutX="404.0" layoutY="308.0" text="v0.1" />
             <JFXSpinner layoutX="382.0" layoutY="510.0" />
          </children>
       </Pane>
