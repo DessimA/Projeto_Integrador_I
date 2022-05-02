@@ -61,7 +61,7 @@ Implementar e documentar uma aplicação desktop para gerenciar as notas e histo
 
 >  Cadastrar novos alunos;
 
->  Abrir e encerrar período de matrícula;
+>  Abrir período de matrícula;
 
 >  Encerrar semestre;
 
