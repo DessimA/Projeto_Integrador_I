@@ -12,7 +12,7 @@ public class Database{
 		static final String DB_URL = "jdbc:postgresql://localhost:5432/academico";
 		
 		static final String USER = "postgres";
-		static final String PASS = "123456";
+		static final String PASS = "admin";
 	
 		Connection conn = null;
         Statement stnt = null;
@@ -27,10 +27,8 @@ public class Database{
     			System.out.println("Criando um statement");
     			stnt = conn.createStatement();
     		} catch (SQLException e) {
-    				// TODO Auto-generated catch block
     				e.printStackTrace();
     		} catch (ClassNotFoundException e) {
-    			// TODO Auto-generated catch block
     			e.printStackTrace();
     		}
       }
@@ -41,7 +39,6 @@ public class Database{
 			conn.close();
 			stnt.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	  

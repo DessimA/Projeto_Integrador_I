@@ -19,7 +19,7 @@ public class AlunoDAOImpl implements AlunoDAO{
 
 	// Database credentials
 	static final String USER = "postgres";
-	static final String PASS = "123456";
+	static final String PASS = "admin";
 		
 	static final String INSERT = "INSERT INTO aluno (nome, cpf, dataNascimento) VALUES ( ?, ?, ?)";
 	static final String UPDATE = "UPDATE aluno SET nome=?, cpf=?, dataNascimento=? where id=?";

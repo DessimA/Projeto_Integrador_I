@@ -19,7 +19,7 @@ public class ProfessorDAOImpl implements ProfessorDAO{
 
 	// Database credentials
 	static final String USER = "postgres";
-	static final String PASS = "123456";
+	static final String PASS = "admin";
 		
 	static final String INSERT = "INSERT INTO professor (nome, cpf, dataNascimento) VALUES ( ?, ?, ?)";
 	static final String UPDATE = "UPDATE professor SET nome=?, cpf=?, dataNascimento=? where id=?";

@@ -21,7 +21,7 @@ public class DisciplinaDAOImpl implements DisciplinaDAO{
 
 	// Database credentials
 	static final String USER = "postgres";
-	static final String PASS = "123456";
+	static final String PASS = "admin";
 		
 	static final String INSERT = "INSERT INTO disciplina (nome_disciplina, id_semestre) VALUES (?, ?)";
 	static final String UPDATE = "UPDATE disciplina SET nome_disciplina=? where id=?";
