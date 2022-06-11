@@ -88,9 +88,9 @@ Implementar e documentar uma aplicação desktop para gerenciar as notas e histo
 
 ## :eyes: **Pré Visualização:**
 
-![login](https://user-images.githubusercontent.com/60760405/166170729-800dc01f-8a9f-45b7-b2b7-0e86552d4b97.png)
-![load](https://user-images.githubusercontent.com/60760405/166170728-7c2691e8-30ad-46ec-9a2c-debaeda03372.png)
-![admin](https://user-images.githubusercontent.com/60760405/166170726-6ef2dfaf-1d0d-4b85-b177-4db92915c1f0.png)
+![login](https://user-images.githubusercontent.com/60760405/173166910-6df883d9-251c-46eb-9abc-0d4632dc529a.png)
+![admin](https://user-images.githubusercontent.com/60760405/173166911-3f95d1ba-40e8-4cfc-a0a5-0381a6092d88.png)
+![aluno](https://user-images.githubusercontent.com/60760405/173166912-828f7087-6c97-45b9-8aea-61f14684696f.jpg)
 
 
 
