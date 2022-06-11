@@ -44,37 +44,36 @@ public class FXMLTelaProfessorController implements Initializable {
     private Label lblSaudacao;
 
     @FXML
-    private ImageView imvSaudacao;   
+    private ImageView imvSaudacao;
 
     @FXML
     private ImageView imgvLogo;
-    
-    //CHAMANDO COORDENADOR
-    Administrador administrador = Main.getInstance().administrador();    
-    
-    //COMBOBOXS
 
-    //LISTAS
-    
+    // CHAMANDO COORDENADOR
+    Administrador administrador = Main.getInstance().administrador();
+
+    // COMBOBOXS
+
+    // LISTAS
+
     Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-    
-        
-    public void removido(String item){
-       alert2.setTitle("REMOVIDO");
-       alert2.setHeaderText(null);
-       alert2.setContentText(item+" foi removido");
-       alert2.show();
-    }        
-    
+
+    public void removido(String item) {
+        alert2.setTitle("REMOVIDO");
+        alert2.setHeaderText(null);
+        alert2.setContentText(item + " foi removido");
+        alert2.show();
+    }
+
     @FXML
     void desabilitarOutros(ActionEvent event) {
-        if(ckeckAdministrador.isSelected()){
+        if (ckeckAdministrador.isSelected()) {
             cboxDestinatario.setDisable(true);
-        }else{
+        } else {
             cboxDestinatario.setDisable(false);
         }
     }
-         
+
     @FXML
     void sair(ActionEvent event) {
         System.out.println("-----SAINDO PROFESSOR------");
@@ -87,10 +86,8 @@ public class FXMLTelaProfessorController implements Initializable {
         lblmatricula.setText(administrador.getProfessores().get(administrador.getIndexUsuarioTela()).getMatricula());
     }
 
-   
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-    
+    }
+
 }

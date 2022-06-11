@@ -1,7 +1,6 @@
 
 package sistemaacademico.controller;
 
-
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
@@ -29,13 +28,13 @@ import sistemaacademico.model.Turma;
  * @author DessimA
  */
 public class FXMLTelaAlunoController implements Initializable {
-    
+
     @FXML
     private ImageView imgvUser;
 
     @FXML
     private Label lblmatricula;
-    
+
     @FXML
     private Label lblNome;
 
@@ -70,68 +69,69 @@ public class FXMLTelaAlunoController implements Initializable {
     private Label lblSaudacao;
 
     @FXML
-    private ImageView imvSaudacao;    
+    private ImageView imvSaudacao;
 
     @FXML
     private ImageView imgvLogo;
-    
-    //CHAMANDO ADMINISTRADOR
-    Administrador administrador = Main.getInstance().administrador();    
-    
-    //COMBOBOXS
 
-    //LISTAS
+    // CHAMANDO ADMINISTRADOR
+    Administrador administrador = Main.getInstance().administrador();
+
+    // COMBOBOXS
+
+    // LISTAS
     private ObservableList<Turma> obsTurmasAluno;
     private ObservableList<Turma> obsTurmasDisponiveis;
-    
+
     Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-    
-    public void trancar(){
-       alert2.setTitle("TRANCADA");
-       alert2.setHeaderText(null);
-       alert2.setContentText("Essa disciplina foi trancada");
-       alert2.show();
+
+    public void trancar() {
+        alert2.setTitle("TRANCADA");
+        alert2.setHeaderText(null);
+        alert2.setContentText("Essa disciplina foi trancada");
+        alert2.show();
     }
-    public void matricular(String item){
-       alert2.setTitle("MATRICULADO!");
-       alert2.setHeaderText(null);
-       alert2.setContentText(item+" adicionado!");
-       alert2.show();
+
+    public void matricular(String item) {
+        alert2.setTitle("MATRICULADO!");
+        alert2.setHeaderText(null);
+        alert2.setContentText(item + " adicionado!");
+        alert2.show();
     }
-    
-    public void removido(String item){
-       alert2.setTitle("REMOVIDO");
-       alert2.setHeaderText(null);
-       alert2.setContentText(item+" foi removido");
-       alert2.show();
+
+    public void removido(String item) {
+        alert2.setTitle("REMOVIDO");
+        alert2.setHeaderText(null);
+        alert2.setContentText(item + " foi removido");
+        alert2.show();
     }
-      
-    
-    //CARREGAR LISTAS-CBOX
-    public void carregarTurmasAlunoLista(){  
+
+    // CARREGAR LISTAS-CBOX
+    public void carregarTurmasAlunoLista() {
         Aluno aluno = administrador.getAlunos().get(administrador.getIndexUsuarioTela());
-       
+
         obsTurmasAluno = FXCollections.observableArrayList(aluno.getTurmas());
-        lvTurmasAluno.setItems(obsTurmasAluno);    
-        
+        lvTurmasAluno.setItems(obsTurmasAluno);
+
         contadorTurmasAluno.setText(Integer.toString(aluno.getTurmas().size()));
-    }   
-    public void carregarTurmasDisponiveis(){        
+    }
+
+    public void carregarTurmasDisponiveis() {
         obsTurmasDisponiveis = FXCollections.observableArrayList(administrador.getTurmas());
-        lvTurmas.setItems(obsTurmasDisponiveis);    
-        
+        lvTurmas.setItems(obsTurmasDisponiveis);
+
         contadorTurmasDisponiveis.setText(Integer.toString(administrador.getTurmas().size()));
     }
 
     @FXML
     void abrirSecaoMatricular(ActionEvent event) {
         paneTurmasDisponiveis.setVisible(true);
-        
+
         paneTurmasAluno.setVisible(false);
-                
+
         imvSaudacao.setVisible(false);
         lblSaudacao.setVisible(false);
-        
+
         carregarTurmasDisponiveis();
 
     }
@@ -139,42 +139,41 @@ public class FXMLTelaAlunoController implements Initializable {
     @FXML
     void abrirSecaoTurmas(ActionEvent event) {
         paneTurmasAluno.setVisible(true);
-        
+
         paneTurmasDisponiveis.setVisible(false);
-        
+
         imvSaudacao.setVisible(false);
         lblSaudacao.setVisible(false);
-        
-        if(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().size() > 0){
+
+        if (administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().size() > 0) {
             carregarTurmasAlunoLista();
-        }else{
+        } else {
             System.out.println("O ALUNO AINDA NAO TEM TURMAS");
         }
-  
+
     }
+
     @FXML
-    void desabilitarOutros(ActionEvent event) { 
-        if(ckeckAdministrador.isSelected()){
+    void desabilitarOutros(ActionEvent event) {
+        if (ckeckAdministrador.isSelected()) {
             cboxDestinatario.setDisable(true);
-        }else{
+        } else {
             cboxDestinatario.setDisable(false);
         }
     }
 
-    
-
     @FXML
     void matricularTurma(ActionEvent event) {
-        if(administrador.getTurmas().size() > 0){
-            Turma turma  = lvTurmas.getSelectionModel().getSelectedItem();
+        if (administrador.getTurmas().size() > 0) {
+            Turma turma = lvTurmas.getSelectionModel().getSelectedItem();
             administrador.getAlunos().get(administrador.getIndexUsuarioTela()).addTurma(turma);
-            System.out.println("FEITO");   
-            
+            System.out.println("FEITO");
+
             matricular(turma.getCodigo());
-        }else{
+        } else {
             System.out.println("NAO HA TURMAS");
         }
-        
+
     }
 
     @FXML
@@ -182,33 +181,32 @@ public class FXMLTelaAlunoController implements Initializable {
         System.out.println("-----SAINDO ALUNO------");
         Main.trocarTela("login");
     }
-    
+
     @FXML
     void trancarTurma(ActionEvent event) {
-       if(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().size() > 0){
+        if (administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().size() > 0) {
             trancar();
-        
-            administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().remove(lvTurmasAluno.getSelectionModel().getSelectedItem());
-            obsTurmasAluno.remove(lvTurmasAluno.getSelectionModel().getSelectedItem());
-        
-            contadorTurmasAluno.setText(Integer.toString(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().size()));
-       }else{
-           System.out.println("NAO HA TURMAS");
-       }
-    }
 
-    
+            administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas()
+                    .remove(lvTurmasAluno.getSelectionModel().getSelectedItem());
+            obsTurmasAluno.remove(lvTurmasAluno.getSelectionModel().getSelectedItem());
+
+            contadorTurmasAluno.setText(Integer
+                    .toString(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getTurmas().size()));
+        } else {
+            System.out.println("NAO HA TURMAS");
+        }
+    }
 
     @FXML
     void sairLoading(ActionEvent event) {
         lblNome.setText(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getNome());
         lblmatricula.setText(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getMatricula());
-        
+
     }
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-    
+    }
+
 }

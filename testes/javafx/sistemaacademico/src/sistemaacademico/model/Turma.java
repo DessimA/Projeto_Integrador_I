@@ -12,14 +12,14 @@ public class Turma {
     private @Getter @Setter Professor professor;
     private @Getter @Setter Disciplina disciplina;
     private ArrayList<Aluno> alunos;
-    
-    //CONSTRUTOR ===============
+
+    // CONSTRUTOR ===============
     public Turma(String codigo, Curso curso, Disciplina disciplina, Professor professor) {
         this.codigo = codigo;
         this.curso = curso;
         this.disciplina = disciplina;
-        this.professor = professor;        
-    }    
+        this.professor = professor;
+    }
 
     public ArrayList<Aluno> getAlunos() {
         return alunos;
@@ -28,17 +28,16 @@ public class Turma {
     public void setAlunos(ArrayList<Aluno> alunos) {
         this.alunos = alunos;
     }
-    
-    //METODOS
-    
+
+    // METODOS
+
     public void mudarProfessor(Professor novoProfessor) {
-    	this.professor = novoProfessor;    	
+        this.professor = novoProfessor;
     }
-    
+
     @Override
     public String toString() {
         return getCodigo();
     }
-      
-    
+
 }

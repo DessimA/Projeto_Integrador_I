@@ -7,25 +7,25 @@ import lombok.Setter;
 
 public class Curso {
     private @Getter @Setter String nome;
-    
+
     private ArrayList<Disciplina> disciplinas;
     private ArrayList<Turma> turmas;
     private ArrayList<Professor> professores;
     private ArrayList<Aluno> alunos;
 
-    
-    //CONSTRUTOR ===============
+    // CONSTRUTOR ===============
     public Curso(String nome) {
         this.nome = nome;
-        
+
     }
-    public Curso(){ 
-        
+
+    public Curso() {
+
     }
-    
+
     // GETTERS E SETTERS ===============
-     
-    //DISCIPLINA
+
+    // DISCIPLINA
     public ArrayList<Disciplina> getDisciplinas() {
         return disciplinas;
     }
@@ -33,8 +33,8 @@ public class Curso {
     public void setDisciplinas(Disciplina nomeDisciplinas) {
         disciplinas.add(nomeDisciplinas);
     }
-    
-    //TURMAS
+
+    // TURMAS
     public ArrayList<Turma> getTurmas() {
         return turmas;
     }
@@ -42,8 +42,8 @@ public class Curso {
     public void setTurma(Turma a) {
         turmas.add(a);
     }
-    
-    //PROFESSORES
+
+    // PROFESSORES
     public ArrayList<Professor> getProfessores() {
         return professores;
     }
@@ -51,8 +51,8 @@ public class Curso {
     public void setProfessores(Professor professor) {
         professores.add(professor);
     }
-    
-    //ALUNOS
+
+    // ALUNOS
     public ArrayList<Aluno> getAlunos() {
         return alunos;
     }
@@ -65,5 +65,5 @@ public class Curso {
     public String toString() {
         return getNome();
     }
-   
+
 }
