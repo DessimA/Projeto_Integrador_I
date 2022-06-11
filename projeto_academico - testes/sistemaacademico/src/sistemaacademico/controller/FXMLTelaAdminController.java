@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXRadioButton;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,13 +20,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
-import javafx.scene.shape.Circle;
 import sistemaacademico.Main;
 import sistemaacademico.model.Aluno;
 import sistemaacademico.model.Administrador;
 import sistemaacademico.model.Curso;
 import sistemaacademico.model.Disciplina;
-import sistemaacademico.model.Mensagem;
 import sistemaacademico.model.Pessoa;
 import sistemaacademico.model.Professor;
 import sistemaacademico.model.Turma;
@@ -209,31 +206,8 @@ public class FXMLTelaAdminController implements Initializable {
     private JFXComboBox<Turma> cboxTurmaEditar;
 
     @FXML
-    private JFXComboBox<Professor> cboxProfessorEditar;
-
-    @FXML
-    private Pane paneInbox;
-
-    @FXML
-    private Label contadorMensagens;
-
-    @FXML
-    private JFXListView<Mensagem> lvMensagens;
-
-    @FXML
-    private Pane paneEnviar;
-
-    @FXML
-    private JFXTextArea areaTextoAdmin;
-
-    @FXML
-    private JFXComboBox<Pessoa> cboxDestinoAdmin;
-
-    @FXML
-    private Circle indicadorInbox;
-
-    @FXML
-    private Label contadorInbox;
+    private JFXComboBox<Professor> cboxProfessorEditar;      
+ 
     
     @FXML
     private Label lblSaudacao;
@@ -294,20 +268,8 @@ public class FXMLTelaAdminController implements Initializable {
        alert2.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
        alert2.show();
     }
-    public void enviado(String destinatario){
-       alert2.setTitle("ENVIADO");
-       alert2.setHeaderText(null);
-       alert2.setContentText("A mensagem foi enviada para "+destinatario);
-       alert2.show();
-    }
-    public void verMensagem(String texto,String remetente){
-       alert2.setTitle("MENSAGEM");
-       alert2.setHeaderText("POR = "+remetente);
-       alert2.setContentText(texto);
-       
-       alert2.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-       alert2.show();
-    }    
+   
+        
     public void verItemListaAlunoProfessor(String curso, String nome, String matricula){
        alert2.setTitle("VER");
        alert2.setHeaderText(null);
@@ -355,8 +317,7 @@ public class FXMLTelaAdminController implements Initializable {
     private ObservableList<Turma> obsTurmaLista;
     private ObservableList<Disciplina> obsDisciplinaLista;
     
-    private ObservableList<Mensagem> obsMensagensLista;
-    
+        
     //METODOS PARA CARREGAR LISTAS
     public void carregarAlunosLista(){        
         obsAlunoLista = FXCollections.observableArrayList(administrador.getAlunos());
@@ -389,13 +350,7 @@ public class FXMLTelaAdminController implements Initializable {
         
         contadorDisciplinas.setText(Integer.toString(administrador.getDisciplinas().size()));
     }
-    public void carregarMensagensLista(){        
-        obsMensagensLista = FXCollections.observableArrayList(administrador.getInbox());
-        lvMensagens.setItems(obsMensagensLista);    
-        
-        contIbox = administrador.getInbox().size();
-        contandoMensagens();
-    }
+    
     
     //MENUS DA TELA
     @FXML
@@ -405,11 +360,9 @@ public class FXMLTelaAdminController implements Initializable {
         gridAluno.setVisible(true);
         gridProfessor.setVisible(false);
 
-        paneInbox.setVisible(false);
         paneCriacao.setVisible(false); 
         paneEditar.setVisible(false);
         paneListar.setVisible(false);
-        paneEnviar.setVisible(false);
         
         lblSaudacao.setVisible(false);
         imvSaudacao.setVisible(false);
@@ -424,11 +377,9 @@ public class FXMLTelaAdminController implements Initializable {
         gridDisciplina.setVisible(false);
         gridTurma.setVisible(false);
 
-        paneInbox.setVisible(false);
         paneRegistro.setVisible(false); 
         paneEditar.setVisible(false);
         paneListar.setVisible(false);
-        paneEnviar.setVisible(false);
         
         lblSaudacao.setVisible(false);
         imvSaudacao.setVisible(false);
@@ -445,11 +396,9 @@ public class FXMLTelaAdminController implements Initializable {
         gridListaProfessores.setVisible(false);
         gridListaTurmas.setVisible(false);
 
-        paneInbox.setVisible(false);
         paneRegistro.setVisible(false); 
         paneCriacao.setVisible(false);
         paneEditar.setVisible(false);
-        paneEnviar.setVisible(false);
         
         lblSaudacao.setVisible(false);
         imvSaudacao.setVisible(false);
@@ -466,51 +415,17 @@ public class FXMLTelaAdminController implements Initializable {
     void abrirSecaoEditar(ActionEvent event) {
         paneEditar.setVisible(true);
 
-        paneInbox.setVisible(false);
         paneRegistro.setVisible(false); 
         paneCriacao.setVisible(false);
         paneListar.setVisible(false);
-        paneEnviar.setVisible(false);
         
         lblSaudacao.setVisible(false);
         imvSaudacao.setVisible(false);
 
     }
     
-    @FXML
-    void abrirSecaoInbox(ActionEvent event) {
-        paneInbox.setVisible(true);
-        
-        paneRegistro.setVisible(false); 
-        paneCriacao.setVisible(false);
-        paneListar.setVisible(false);
-        paneEditar.setVisible(false);
-        paneEnviar.setVisible(false);
-        
-        lblSaudacao.setVisible(false);
-        imvSaudacao.setVisible(false);     
-        
-        carregarMensagensLista();
-        contadorMensagens.setText(Integer.toString(contIbox));
-
-    }
-
-    @FXML
-    void abrirSecaoEnviarMensagem(ActionEvent event) {
-        paneEnviar.setVisible(true);
-
-        paneRegistro.setVisible(false); 
-        paneCriacao.setVisible(false);
-        paneListar.setVisible(false);
-        paneEditar.setVisible(false);
-        paneInbox.setVisible(false);
-        
-        lblSaudacao.setVisible(false);
-        imvSaudacao.setVisible(false);
-
-    }
- 
-    @FXML
+    
+   @FXML
     void sair(ActionEvent event) {
         //MOSTRANDO COMO TELA DE INICIO NOVAMENTE PARA O PROXIMO LOGIN
         imvSaudacao.setVisible(true);
@@ -524,8 +439,6 @@ public class FXMLTelaAdminController implements Initializable {
         paneCriacao.setVisible(false);
         paneListar.setVisible(false);
         paneEditar.setVisible(false);
-        paneInbox.setVisible(false);
-        paneEnviar.setVisible(false);
         
         
         System.out.println("#--------Saindo--------#");        
@@ -564,7 +477,6 @@ public class FXMLTelaAdminController implements Initializable {
         }else{
             if( administrador.registrarAluno(nome, cpf, matricula, cursoObj) == 0){
                 obsPessoa = FXCollections.observableArrayList(administrador.getPessoas());
-                cboxDestinoAdmin.setItems(obsPessoa);    
 
                 registroRealizado(nome,matricula+"01");
             }else{
@@ -607,7 +519,6 @@ public class FXMLTelaAdminController implements Initializable {
                 cboxProfessorEditar.setItems(obsProfessores);
 
                 obsPessoa = FXCollections.observableArrayList(administrador.getPessoas());
-                cboxDestinoAdmin.setItems(obsPessoa);
                 registroRealizado(nome,matricula+"02");
                 
             }else{
@@ -871,7 +782,6 @@ public class FXMLTelaAdminController implements Initializable {
         contadorAlunos.setText(Integer.toString(administrador.getAlunos().size()));
         
         obsPessoa = FXCollections.observableArrayList(administrador.getPessoas());
-        cboxDestinoAdmin.setItems(obsPessoa);
 
     }
 
@@ -925,7 +835,6 @@ public class FXMLTelaAdminController implements Initializable {
         cboxProfessor.setItems(obsProfessores);
         cboxProfessorEditar.setItems(obsProfessores);
         obsPessoa = FXCollections.observableArrayList(administrador.getPessoas());
-        cboxDestinoAdmin.setItems(obsPessoa);
         
     }
 
@@ -944,56 +853,7 @@ public class FXMLTelaAdminController implements Initializable {
         cboxTurmaEditar.setItems(obsTurmas);
     }
     
-    //------------> ITEM INBOX
-
-
-    @FXML
-    void removerMensagem(ActionEvent event) {
-        removido("Mensagem");
         
-        administrador.getInbox().remove(lvMensagens.getSelectionModel().getSelectedItem());
-        obsMensagensLista.remove(lvMensagens.getSelectionModel().getSelectedItem());
-        
-        contadorMensagens.setText(Integer.toString(administrador.getInbox().size()));
-        contadorInbox.setText(Integer.toString(administrador.getInbox().size()));
-        System.out.println(administrador.getInbox());
-        
-        if(administrador.getInbox().size() == 0){
-            contadorInbox.setVisible(false);
-            indicadorInbox.setVisible(false);
-        }
-    }
-
-    @FXML
-    void verMensagem(ActionEvent event) {
-        Mensagem mensagem = lvMensagens.getSelectionModel().getSelectedItem();
-        verMensagem(mensagem.getTexto(), mensagem.getRemetente());
-    }
-
-    
-    //------------> ITEM ENVIAR MENSAGEM
-
-    @FXML
-    void enviarMensagem(ActionEvent event) {
-        String texto = areaTextoAdmin.getText();
-        Pessoa destinatario = cboxDestinoAdmin.getSelectionModel().getSelectedItem();
-       
-        if(texto == null || texto.equals("")){
-            System.out.println("VAZIO");
-        }else{
-            administrador.enviarMensagem(destinatario, texto);
-            areaTextoAdmin.setText("");
-            cboxDestinoAdmin.getSelectionModel().clearSelection();
-            
-            enviado(destinatario.getNome());
-            
-            //System.out.println("MENSAGEM ENVIADA PARA "+destinatario.getNome());
-            
-            //System.out.println(destinatario.getInbox());
-        }
-
-    }
-    
 
     //------------> ITEM EDITAR
 
@@ -1013,17 +873,10 @@ public class FXMLTelaAdminController implements Initializable {
     }
 
 
-    void contandoMensagens(){
-        if(contIbox > 0){
-            contadorInbox.setVisible(true);
-            indicadorInbox.setVisible(true);
-            contadorInbox.setText(Integer.toString(contIbox));
-        }
-    }
+   
     
     @FXML
     void sairLoading(ActionEvent event) {
-        carregarMensagensLista();
         telaDeLoading.setVisible(false);   
     }
       
@@ -1047,15 +900,10 @@ public class FXMLTelaAdminController implements Initializable {
         paneCriacao.setVisible(false);
         paneListar.setVisible(false);
         paneEditar.setVisible(false);
-        paneInbox.setVisible(false);
-        paneEnviar.setVisible(false);
         
         //DEFININDO MATRICULA NA INTEFACE
-        lblmatricula.setText(administrador.getMatricula());
-        
-        //REMOVENDO INDICADOR DE MENSAGENS
-        indicadorInbox.setVisible(false);
-        contadorInbox.setVisible(false);
+        lblmatricula.setText(administrador.getMatricula());       
+            
 
         alert2.setResizable(true);
         

@@ -20,7 +20,6 @@ public class Administrador{
     private final ArrayList<Turma> turmas = new ArrayList<>();
     private final ArrayList<Pessoa> pessoas = new ArrayList<>(); // PARA A PARTE DAS MENSAGENS
     
-    private final ArrayList<Mensagem> inbox = new ArrayList<>();
     //CONSTRUTOR
     public Administrador() {
 		
@@ -79,17 +78,8 @@ public class Administrador{
     }
     public void setTurma(Turma turma){
         turmas.add(turma);
-    } 
+    }      
      
-    //INBOX
-    public ArrayList<Mensagem> getInbox() {
-        return inbox;
-    }
-
-    public void setInbox(Mensagem mensagem) {
-    	inbox.add(mensagem);
-    }
-      
     //METODOS
     public int registrarAluno(String nome, String cpf, String matricula, Curso curso){
         matricula += "01";
@@ -204,12 +194,6 @@ public class Administrador{
 
         System.out.println("CADASTRADA A NOVA DISCIPLINA!");
         return 0;
-    }
-    
-     //-- PARA OBJETOS QUE HERDAM DE PESSOA (ALUNO E PROFESSOR)
-    public void enviarMensagem(Pessoa destinatario, String texto) {
-    	Mensagem mensagem = new Mensagem(texto,this.getNome());
-    	destinatario.setInbox(mensagem);
-    }   
+    }    
         
 }
