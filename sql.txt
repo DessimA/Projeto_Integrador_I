@@ -1,0 +1,49 @@
+CREATE DATABASE academico;
+
+CREATE TABLE IF NOT EXISTS public.administrador
+(
+    id integer NOT NULL DEFAULT nextval('administrador_id_seq'::regclass),
+    nome character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    cpf character varying(16) COLLATE pg_catalog."default",
+    datanascimento character varying(11) COLLATE pg_catalog."default",
+    CONSTRAINT administrador_pkey PRIMARY KEY (id)
+),
+
+CREATE TABLE IF NOT EXISTS public.aluno
+(
+    id integer NOT NULL DEFAULT nextval('aluno_id_seq'::regclass),
+    nome character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    cpf character varying(16) COLLATE pg_catalog."default",
+    datanascimento character varying(11) COLLATE pg_catalog."default",
+    CONSTRAINT aluno_pkey PRIMARY KEY (id)
+),
+
+CREATE TABLE IF NOT EXISTS public.disciplina
+(
+    id integer NOT NULL DEFAULT nextval('disciplina_id_seq'::regclass),
+    nome_disciplina character varying(40) COLLATE pg_catalog."default",
+    id_semestre integer NOT NULL DEFAULT nextval('disciplina_id_semestre_seq'::regclass),
+    CONSTRAINT disciplina_pkey PRIMARY KEY (id),
+    CONSTRAINT disciplina_id_semestre_fkey FOREIGN KEY (id_semestre)
+        REFERENCES public.semestre (id_semestre) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+),
+
+CREATE TABLE IF NOT EXISTS public.professor
+(
+    id integer NOT NULL DEFAULT nextval('professor_id_seq'::regclass),
+    nome character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    cpf character varying(16) COLLATE pg_catalog."default",
+    datanascimento character varying(11) COLLATE pg_catalog."default",
+    id_funcion character varying(30) COLLATE pg_catalog."default",
+    CONSTRAINT professor_pkey PRIMARY KEY (id)
+),
+
+CREATE TABLE IF NOT EXISTS public.semestre
+(
+    id_semestre integer NOT NULL DEFAULT nextval('semestre_id_semestre_seq'::regclass),
+    semestre_aberto boolean,
+    matricula_aberta boolean,
+    CONSTRAINT semestre_pkey PRIMARY KEY (id_semestre)
+);
