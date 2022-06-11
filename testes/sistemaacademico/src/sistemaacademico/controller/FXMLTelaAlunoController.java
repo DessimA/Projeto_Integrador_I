@@ -70,10 +70,7 @@ public class FXMLTelaAlunoController implements Initializable {
     private Label lblSaudacao;
 
     @FXML
-    private ImageView imvSaudacao;
-
-    @FXML
-    private Pane telaDeLoading;
+    private ImageView imvSaudacao;    
 
     @FXML
     private ImageView imgvLogo;
@@ -183,7 +180,6 @@ public class FXMLTelaAlunoController implements Initializable {
     @FXML
     void sair(ActionEvent event) {
         System.out.println("-----SAINDO ALUNO------");
-        telaDeLoading.setVisible(true);
         Main.trocarTela("login");
     }
     
@@ -207,14 +203,12 @@ public class FXMLTelaAlunoController implements Initializable {
     void sairLoading(ActionEvent event) {
         lblNome.setText(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getNome());
         lblmatricula.setText(administrador.getAlunos().get(administrador.getIndexUsuarioTela()).getMatricula());
-        telaDeLoading.setVisible(false);
         
     }
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        telaDeLoading.setVisible(true);
     }    
     
 }

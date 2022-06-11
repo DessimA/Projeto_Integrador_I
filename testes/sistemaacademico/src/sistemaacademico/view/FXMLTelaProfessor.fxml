@@ -82,24 +82,5 @@
             <Image url="@../images/professor.boasvindas.png" />
          </image>
       </ImageView>
-      <Pane fx:id="telaDeLoading" prefHeight="600.0" prefWidth="802.0" style="-fx-background-color: white;" visible="false">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="802.0" />
-            <JFXButton layoutX="308.0" layoutY="374.0" onAction="#sairLoading" prefHeight="57.0" prefWidth="213.0" style="-fx-background-color: #177910;" text="Continuar" textFill="WHITE" />
-            <Label layoutX="347.0" layoutY="473.0" text="Carregando dados..." />
-            <ImageView fx:id="imgvLogo" fitHeight="128.0" fitWidth="128.0" layoutX="350.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/logo.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="300.0" layoutY="279.0" text="Sistema Academico">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Label layoutX="404.0" layoutY="308.0" text="v0.1" />
-            <JFXSpinner layoutX="382.0" layoutY="510.0" />
-         </children>
-      </Pane>
    </children>
 </AnchorPane>

@@ -213,11 +213,8 @@ public class FXMLTelaAdminController implements Initializable {
     private Label lblSaudacao;
 
     @FXML
-    private ImageView imvSaudacao;
-    
-    @FXML
-    private Pane telaDeLoading;
-        
+    private ImageView imvSaudacao;    
+     
     //INSTACIANDO ADMINISTRADOR
     Administrador administrador = Main.getInstance().administrador();
     int contIbox = 0;
@@ -430,7 +427,6 @@ public class FXMLTelaAdminController implements Initializable {
         //MOSTRANDO COMO TELA DE INICIO NOVAMENTE PARA O PROXIMO LOGIN
         imvSaudacao.setVisible(true);
         lblSaudacao.setVisible(true);
-        telaDeLoading.setVisible(true);
         
         //DEIXANDO INVISIVEL OS MENUS NAO ATIVOS
         paneRegistro.setVisible(false); 
@@ -870,15 +866,7 @@ public class FXMLTelaAdminController implements Initializable {
         //System.out.println("ATUALIZADO");
         
         atualizado(professor.getNome(), turma.getCodigo());
-    }
-
-
-   
-    
-    @FXML
-    void sairLoading(ActionEvent event) {
-        telaDeLoading.setVisible(false);   
-    }
+    }   
       
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -905,9 +893,8 @@ public class FXMLTelaAdminController implements Initializable {
         lblmatricula.setText(administrador.getMatricula());       
             
 
-        alert2.setResizable(true);
+        alert2.setResizable(true);        
         
-        telaDeLoading.setVisible(true);
     }  
 
 }

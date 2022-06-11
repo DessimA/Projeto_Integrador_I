@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import sistemaacademico.Main;
 import sistemaacademico.model.Administrador;
 import sistemaacademico.model.Pessoa;
@@ -45,10 +44,7 @@ public class FXMLTelaProfessorController implements Initializable {
     private Label lblSaudacao;
 
     @FXML
-    private ImageView imvSaudacao;
-
-    @FXML
-    private Pane telaDeLoading;
+    private ImageView imvSaudacao;   
 
     @FXML
     private ImageView imgvLogo;
@@ -82,7 +78,6 @@ public class FXMLTelaProfessorController implements Initializable {
     @FXML
     void sair(ActionEvent event) {
         System.out.println("-----SAINDO PROFESSOR------");
-        telaDeLoading.setVisible(true);
         Main.trocarTela("login");
     }
 
@@ -90,14 +85,12 @@ public class FXMLTelaProfessorController implements Initializable {
     void sairLoading(ActionEvent event) {
         lblNome.setText(administrador.getProfessores().get(administrador.getIndexUsuarioTela()).getNome());
         lblmatricula.setText(administrador.getProfessores().get(administrador.getIndexUsuarioTela()).getMatricula());
-        telaDeLoading.setVisible(false);
     }
 
    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        telaDeLoading.setVisible(true);
     }    
     
 }
