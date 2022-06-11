@@ -1,6 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\PC\\Documents\\GitHub\\Projeto_Integrador_I\\libs\\postgresql-42.3.6.jar"
-    ]
-}
